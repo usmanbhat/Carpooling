@@ -10,7 +10,7 @@ export class UsersService {
   // private serverUrl = 'http://localhost:4000';
   private serverUrl = 'https://carpooling-ten.vercel.app';
   
-  private countryAPI = 'https://restcountries.com/v3/all'
+  private countryAPI = 'https://restcountries.com/v3.1/all'
 
 
   constructor(private http: HttpClient) { }
