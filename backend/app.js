@@ -72,7 +72,7 @@ app.use(feedbackRoutes)
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/frontend/index.html'));
+  res.sendFile(path.resolve(__dirname, 'dist/frontend/index.html'));
 });
 
  //app.get("/", async (req, res) => {
