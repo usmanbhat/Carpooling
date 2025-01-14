@@ -84,6 +84,7 @@ app.get('*', (req, res) => {
 // });
 
 initializeSocket(http)
-http.listen(PORT, () => {
+http.listen(PORT, (err) => {
+  if (err) console.log(err);
   console.log(`Server is running on http://localhost:${PORT}`);
 });
