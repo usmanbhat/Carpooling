@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class StripeService {
   // url = "http://localhost:4000"
-  private serverUrl = 'http://eberride-env.eba-83w3w3ik.ap-south-1.elasticbeanstalk.com';
+  private serverUrl = 'https://carpooling-ten.vercel.app';
 
 
   constructor(private http :HttpClient) { }
