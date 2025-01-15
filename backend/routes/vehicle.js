@@ -48,7 +48,7 @@
   });
 
 
-  // -------------------------------------------------ADD NEW VEHICLE---------------------------------------------
+  /* -------------------------------------------------ADD NEW VEHICLE---------------------------------------------
   VehicleRoutes.post('/vehicleadd', async (req, res, next) => {
     upload.single('vehicleImage')(req, res, function (err) {
       if (err instanceof multer.MulterError) {
@@ -83,7 +83,31 @@
         res.status(500).json({ success: false, message: err});
       }
     });
+*/
+// -------------------------------------------------ADD NEW VEHICLE---------------------------------------------
+VehicleRoutes.post('/vehicleadd', async (req, res) => {
+  const { vehicleName } = req.body;
 
+  try {
+    // Use 'default.jpg' if no file is uploaded
+    const vehicleImage = req.file ? req.file.filename : 'default.jpg';
+
+    const vehicle = new vehicleModel({
+      vehicleName: vehicleName,
+      vehicleImage: vehicleImage,
+    });
+
+    await vehicle.save();
+    res.json({ success: true, message: "Vehicle Added Successfully", vehicle });
+  } catch (err) {
+    console.log(err);
+    if (err.keyPattern) {
+      console.log("Vehicle Already Exists");
+      return res.status(500).json({ success: false, message: "Vehicle Already Exists" });
+    }
+    res.status(500).json({ success: false, message: err.message || "An error occurred" });
+  }
+});
 
     // ---------------------------------------CHECKING CITY AND COUNTRY FROM PRICING---------------------------------------------
     VehicleRoutes.post('/vehicledata', async (req, res) => {
