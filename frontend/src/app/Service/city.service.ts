@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CityService {
 
   // private serverUrl = 'http://localhost:4000';
-  private serverUrl = 'https://carpooling-ten.vercel.app';
+  private serverUrl = 'http://104.40.23.115:4000';
 
 
   constructor(private http: HttpClient) { }
